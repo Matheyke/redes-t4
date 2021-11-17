@@ -69,4 +69,6 @@ class Enlace:
         self.resto = _resto.pop()
         for datag in _resto:
             if datag != b'':
+                datag = datag.replace(b'\xDB\xDC', b'\xC0')
+                datag = datag.replace(b'\xDB\xDD', b'\xDB')
                 self.callback(datag)
