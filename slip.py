@@ -71,4 +71,12 @@ class Enlace:
             if datag != b'':
                 datag = datag.replace(b'\xDB\xDC', b'\xC0')
                 datag = datag.replace(b'\xDB\xDD', b'\xDB')
-                self.callback(datag)
+                try:
+                    self.callback(datag)
+                except:
+                    # ignora a exceção, mas mostra na tela
+                    import traceback
+                    traceback.print_exc()
+                #finally:
+                    # faça aqui a limpeza necessária para garantir que não vão sobrar
+                    # pedaços do datagrama em nenhum buffer mantido por você
