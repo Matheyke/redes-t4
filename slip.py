@@ -48,6 +48,8 @@ class Enlace:
         self.callback = callback
 
     def enviar(self, datagrama):
+        datagrama = datagrama.replace(b'\xDB', b'\xDB\xDD')
+        datagrama = datagrama.replace(b'\xC0', b'\xDB\xDC')
         self.linha_serial.enviar(b'\xC0'+datagrama+b'\xC0')
         # TODO: Preencha aqui com o código para enviar o datagrama pela linha
         # serial, fazendo corretamente a delimitação de quadros e o escape de
